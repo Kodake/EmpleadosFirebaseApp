@@ -1,3 +1,7 @@
 i {
     cursor: pointer;
 }
+
+.fa:hover {
+    opacity: 0.5;
+}

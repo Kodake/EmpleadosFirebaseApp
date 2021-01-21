@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from "ngx-toastr";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 import { OrderModule } from 'ngx-order-pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Components
 import { AppComponent } from './app.component';
@@ -33,7 +35,10 @@ import { LoadingComponent } from './components/loading/loading.component';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    OrderModule
+    FormsModule,
+    FilterPipeModule,
+    OrderModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

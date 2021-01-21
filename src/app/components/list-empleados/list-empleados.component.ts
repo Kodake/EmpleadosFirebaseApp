@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
 import { EmpleadoService } from 'src/app/services/empleado.service';
 
 @Component({
@@ -11,6 +10,10 @@ import { EmpleadoService } from 'src/app/services/empleado.service';
 export class ListEmpleadosComponent implements OnInit {
 
   listEmpleados: any[] = [];
+  key: string = 'nombre';
+  nombre: any;
+  reverse: boolean = false;
+  p: number = 1;
 
   constructor(private empleadoService: EmpleadoService,
     private toastr: ToastrService) { }
@@ -41,10 +44,19 @@ export class ListEmpleadosComponent implements OnInit {
       console.log(error);
     });
   }
-  key:string = 'nombre';
-  reverse: boolean = false;
+
   sort(key) {
     this.key = key;
     this.reverse = !this.reverse;
+  }
+
+  Search() {
+    if (this.nombre == "") {
+      this.ngOnInit();
+    } else {
+      this.listEmpleados = this.listEmpleados.filter(res => {
+        return res.nombre.toLocaleLowerCase().match(this.nombre.toLocaleLowerCase());
+      })
+    }
   }
 }
